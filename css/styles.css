@@ -1,83 +1,131 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f9f9f9;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-  }
-  
-  .container {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .card {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    perspective: 800px;
-  }
-  
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
-  
-  .card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-  }
-  
-  .card-front {
-    background-color: #ffcc00;
-    color: #fff;
-    font-size: 48px;
-    border: 3px solid #fff;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-back {
-    background-color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Estilo para las vocales en el reverso de la tarjeta */
-  .card-back::before {
-    content: attr(data-sound);
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffcc00;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(45deg, #ff66cc, #800080);
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  perspective: 800px;
+  padding: 3px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transform: rotateY(180deg) scale(1); /* Establecer tamaño fijo y evitar cambio de tamaño al girar */
+  transform-origin: center center; /* Establecer el punto de rotación en el centro */
+}
+
+.card:not(.flipped) .card-inner {
+  transform: rotateY(0) scale(1); /* Mostrar la parte frontal sin girar */
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg) scale(1); /* Girar la tarjeta para mostrar la parte trasera */
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.card-front {
+  background: linear-gradient(45deg, #b12c4b, #b66f1f);
+  color: #fff;
+  font-size: 48px;
+  border: 3px solid #fff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.card-back {
+  background-color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+
+/* Estilo para las vocales en el reverso de la tarjeta */
+.card-back::before {
+  content: attr(data-sound);
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+/* Estilos para el botón de reinicio */
+#reset-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #2c27bc, #530853);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#reset-button:hover {
+  background-color: #ffa600;
+}
+/* Estilo para las vocales en el reverso de la tarjeta */
+.card-back::before {
+  content: attr(data-sound);
+  font-size: 48px;
+  font-weight: bold;
+  color: #220870;
+}
+
+#mobile-element {
+  position: absolute;
+  top: 50%;
+  left: 100%; /* Posición inicial a la derecha */
+  transform: translate(-50%, -50%);
+  width: 40px; /* Ajusta el tamaño según tus necesidades */
+  height: 40px;
+}
+
   /* Estilos para hacer la página responsive */
 @media screen and (max-width: 768px) {
     .container {
       max-width: 400px;
+      flex-direction: column; /* Cambiar la dirección del flex alineando los elementos uno sobre el otro */
     }
   
     .card {
-        position: flex;
+      margin-bottom: 10px; /* Agregar margen inferior entre las cajas */
         width: 100px;
       height: 100px;
     }
@@ -88,5 +136,13 @@ body {
   
     .card-back::before {
       font-size: 18px;
+    }
+    #reset-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    .card-front {
+      background-size: cover; /* Ajustar el tamaño de la imagen para cubrir toda la tarjeta */
+      background-position: center; /* Centrar la imagen en la tarjeta */
     }
   }

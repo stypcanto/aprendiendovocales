@@ -4,42 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vocales con Sonido</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
   <div class="container">
+
     <div class="card">
       <div class="card-inner">
-        <div class="card-front" data-sound="a">a</div>
+        <div class="card-front" style="background-image: url('./img/avion.png');"></div>
         <div class="card-back" data-sound="a"></div>
       </div>
     </div>
     <div class="card">
       <div class="card-inner">
-        <div class="card-front" data-sound="e">e</div>
+        <div class="card-front" style="background-image: url('./img/enano.png');"></div>
         <div class="card-back" data-sound="e"></div>
       </div>
     </div>
     <div class="card">
       <div class="card-inner">
-        <div class="card-front" data-sound="i">i</div>
+        <div class="card-front" style="background-image: url('./img/iglesia.png');"></div>
         <div class="card-back" data-sound="i"></div>
       </div>
     </div>
     <div class="card">
       <div class="card-inner">
-        <div class="card-front" data-sound="o">o</div>
+        <div class="card-front" style="background-image: url('./img/oso.png');"></div>
         <div class="card-back" data-sound="o"></div>
       </div>
     </div>
     <div class="card">
       <div class="card-inner">
-        <div class="card-front" data-sound="u">u</div>
+        <div class="card-front" style="background-image: url('./img/uva.png');"></div>
         <div class="card-back" data-sound="u"></div>
       </div>
     </div>
   </div>
   <audio id="audio"></audio>
-  <script src="script.js"></script>
+  
+  <button id="reset-button">Reiniciar</button> <!-- Agregamos el botón de reinicio -->
+  <script src="./js/main.js"></script>
 </body>
 </html>
