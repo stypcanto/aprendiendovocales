@@ -108,14 +108,7 @@ body {
   color: #220870;
 }
 
-#mobile-element {
-  position: absolute;
-  top: 50%;
-  left: 100%; /* Posición inicial a la derecha */
-  transform: translate(-50%, -50%);
-  width: 40px; /* Ajusta el tamaño según tus necesidades */
-  height: 40px;
-}
+
 
   /* Estilos para hacer la página responsive */
 @media screen and (max-width: 768px) {
@@ -135,7 +128,7 @@ body {
     }
   
     .card-back::before {
-      font-size: 18px;
+      font-size: 48px;
     }
     #reset-button {
       font-size: 14px;
